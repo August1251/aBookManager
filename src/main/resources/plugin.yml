@@ -1,0 +1,5 @@
+name: aRules
+version: '1.0.0'
+main: org.august.rules.aRules
+api-version: '1.13'
+authors: [ August1251 ]
