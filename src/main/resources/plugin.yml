@@ -1,5 +1,5 @@
 name: aRules
-version: '1.1.0'
+version: '1.1.1'
 main: org.august.rules.aRules
 api-version: '1.13'
 authors: [ August1251 ]

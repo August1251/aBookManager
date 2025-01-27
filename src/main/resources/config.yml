@@ -1,3 +1,16 @@
+messages:
+  command-sender-is-not-player:
+    enabled: true
+    message:
+      - "This command can only be entered by a player."
+      - "This command can only be entered by a player."
+      - "This command can only be entered by a player."
+  rules-command-successfully:
+    enabled: true
+    message:
+      - "These are the rules of our server"
+
+
 title: "Rules"
 author: "August1251"
 rules:

@@ -1,8 +1,10 @@
 package org.august.rules.command;
 
 import org.august.rules.aRules;
+import org.august.rules.config.MessagesConfiguration;
 import org.august.rules.config.RulesConfiguration;
 import org.august.rules.dto.BookDto;
+import org.august.rules.manager.MessageManager;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,7 +16,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class RulesCommand implements CommandExecutor {
 
+    private final MessagesConfiguration messagesConfiguration = MessagesConfiguration.getInstance();
     private final RulesConfiguration rulesConfiguration = RulesConfiguration.getInstance();
+    private final MessageManager messageManager = MessageManager.getInstance();
     private final aRules rules;
 
     public RulesCommand(aRules rules) {
@@ -39,9 +43,11 @@ public class RulesCommand implements CommandExecutor {
             book.setItemMeta(itemMeta);
 
             player.openBook(book);
+
+            messageManager.sendMessage(messagesConfiguration.getMessage("rules-command-successfully").getMessage(), player);
             return true;
         } else {
-            rules.getLogger().warning("This command can only be entered by a player.");
+            messageManager.sendMessage(messagesConfiguration.getMessage("command-sender-is-not-player").getMessage());
         }
         return false;
     }
