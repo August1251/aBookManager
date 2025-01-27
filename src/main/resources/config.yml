@@ -3,8 +3,10 @@ messages:
     enabled: true
     message:
       - "This command can only be entered by a player."
-      - "This command can only be entered by a player."
-      - "This command can only be entered by a player."
+  rules-command-you-don't-have-permission:
+    enabled: true
+    message:
+      - "You don't have permission."
   rules-command-successfully:
     enabled: true
     message:

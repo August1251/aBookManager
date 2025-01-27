@@ -30,12 +30,15 @@ public class RulesCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            BookDto bookDto = rulesConfiguration.getBook();
+            if (!player.hasPermission("arules.rules")) {
+                messageManager.sendMessage(messagesConfiguration.getMessage("rules-command-you-don't-have-permission"), player);
+                return false;
+            }
 
+            BookDto bookDto = rulesConfiguration.getBook();
             ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
 
             BookMeta itemMeta = (BookMeta) book.getItemMeta();
-
             itemMeta.setTitle(bookDto.getTitle());
             itemMeta.setAuthor(bookDto.getAuthor());
             itemMeta.setPages(bookDto.getRules());
@@ -43,11 +46,11 @@ public class RulesCommand implements CommandExecutor {
             book.setItemMeta(itemMeta);
 
             player.openBook(book);
+            messageManager.sendMessage(messagesConfiguration.getMessage("rules-command-successfully"), player);
 
-            messageManager.sendMessage(messagesConfiguration.getMessage("rules-command-successfully").getMessage(), player);
             return true;
         } else {
-            messageManager.sendMessage(messagesConfiguration.getMessage("command-sender-is-not-player").getMessage());
+            messageManager.sendMessage(messagesConfiguration.getMessage("command-sender-is-not-player"));
         }
         return false;
     }
