@@ -1,6 +1,5 @@
 package org.august.rules.dto;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class BookDto {
