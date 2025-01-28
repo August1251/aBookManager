@@ -22,7 +22,7 @@ public final class aRules extends JavaPlugin {
     }
 
     private void registerCommands() {
-        getCommand("rules").setExecutor(new RulesCommand(this));
+        getCommand("rules").setExecutor(new RulesCommand());
     }
 
 }
