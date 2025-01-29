@@ -1,10 +1,6 @@
 plugins {
-    id 'java'
-    id 'com.gradleup.shadow' version '8.3.5'
+    id 'java-library'
 }
-
-group = 'org.august'
-version = '1.3.0'
 
 repositories {
     mavenCentral()
@@ -20,18 +16,7 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT")
-
-    implementation project(":multi-core:core")
-    implementation project(":multi-core:paper")
-    implementation project(":multi-core:spigot")
-}
-
-shadowJar {
-
-    archiveClassifier.set('')
-    project.configurations.implementation.canBeResolved = true
-    configurations = [project.configurations.implementation]
-
+    api project(":multi-core:core")
 }
 
 def targetJavaVersion = 21
@@ -49,14 +34,5 @@ tasks.withType(JavaCompile).configureEach {
 
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release.set(targetJavaVersion)
-    }
-}
-
-processResources {
-    def props = [version: version]
-    inputs.properties props
-    filteringCharset 'UTF-8'
-    filesMatching('plugin.yml') {
-        expand props
     }
 }

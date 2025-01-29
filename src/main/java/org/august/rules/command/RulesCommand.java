@@ -1,6 +1,7 @@
 package org.august.rules.command;
 
 import org.august.rules.config.MessagesConfiguration;
+import org.august.rules.config.RulesConfiguration;
 import org.august.rules.manager.BookManager;
 import org.august.rules.manager.MessageManager;
 import org.bukkit.command.Command;
@@ -12,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 public class RulesCommand implements CommandExecutor {
 
     private final MessagesConfiguration messagesConfiguration = MessagesConfiguration.getInstance();
+    private final RulesConfiguration rulesConfiguration = RulesConfiguration.getInstance();
     private final MessageManager messageManager = MessageManager.getInstance();
     private final BookManager bookManager = BookManager.getInstance();
 
@@ -23,7 +25,7 @@ public class RulesCommand implements CommandExecutor {
                 messageManager.sendMessage(messagesConfiguration.getMessage("rules-command-you-don't-have-permission"), player);
                 return false;
             }
-            bookManager.openBook(player);
+            bookManager.openBook(player, rulesConfiguration.getBook());
             messageManager.sendMessage(messagesConfiguration.getMessage("rules-command-successfully"), player);
             return true;
         } else {

@@ -1,1 +1,4 @@
 rootProject.name = 'aRules'
+include ':multi-core:core'
+include ':multi-core:paper'
+include ':multi-core:spigot'

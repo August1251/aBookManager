@@ -1,4 +1,4 @@
-package org.august.rules.format;
+package org.august.spigot.format;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,10 +15,10 @@ public class ColorFormatter {
         return Holder.INSTANCE;
     }
 
-    public String getFormattedColor(String message) {
+    public String getColoredText(String text) {
         final Pattern hexPattern = Pattern.compile("&#" + "([A-Fa-f0-9]{6})");
-        Matcher matcher = hexPattern.matcher(message);
-        StringBuilder buffer = new StringBuilder(message.length() + 4 * 8);
+        Matcher matcher = hexPattern.matcher(text);
+        StringBuilder buffer = new StringBuilder(text.length() + 4 * 8);
         while (matcher.find())
         {
             String group = matcher.group(1);
