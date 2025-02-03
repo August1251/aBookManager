@@ -1,8 +1,9 @@
-package org.august.rules.manager;
+package org.august.bookmanager.manager;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.august.paper.PaperMessageSender;
-import org.august.rules.aRules;
-import org.august.rules.dto.MessageDto;
+import org.august.bookmanager.aBookManager;
+import org.august.bookmanager.dto.MessageDto;
 import org.august.spigot.SpigotMessageSender;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -17,12 +18,12 @@ public class MessageManager {
         return Holder.INSTANCE;
     }
 
-    private static aRules rules;
+    private static aBookManager bookManager;
 
     public void sendMessage(MessageDto messageDto) {
         if (!messageDto.isEnabled()) return;
         for (String message : messageDto.getMessage()) {
-            rules.getLogger().warning(message);
+            bookManager.getLogger().warning(message);
         }
     }
 
@@ -31,16 +32,23 @@ public class MessageManager {
         if (Bukkit.getVersion().split("-")[1].equals("Spigot")) {
             for (String message : messageDto.getMessage()) {
                 SpigotMessageSender.getInstance().sendMessage(message, player);
+                System.out.println(getPlaceholderText(message, player));
             }
         } else {
             for (String message : messageDto.getMessage()) {
                 PaperMessageSender.getInstance().sendMessage(message, player);
+                System.out.println(getPlaceholderText(message, player));
             }
         }
     }
 
-    public static void setRules(aRules rules) {
-        MessageManager.rules = rules;
+    private String getPlaceholderText(String message, Player player) {
+        if (bookManager.getServer().getPluginManager().getPlugin("PlaceholderAPI") == null) return message;
+        return PlaceholderAPI.setPlaceholders(player, message);
+    }
+
+    public static void setBookManager(aBookManager bookManager) {
+        MessageManager.bookManager = bookManager;
     }
 
 }

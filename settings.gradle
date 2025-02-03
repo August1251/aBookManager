@@ -1,4 +1,4 @@
-rootProject.name = 'aRules'
+rootProject.name = 'aBookManager'
 include ':multi-core:core'
 include ':multi-core:paper'
 include ':multi-core:spigot'

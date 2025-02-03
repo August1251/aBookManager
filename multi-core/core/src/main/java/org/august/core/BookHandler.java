@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface BookHandler {
 
-    void openBook(Player player, String title, String author, List<String> rules);
+    void openBook(Player player, String title, String author, List<String> rules, boolean... settings);
 
 }

@@ -19,10 +19,11 @@ public class SpigotBookCreator implements BookHandler {
         return Holder.INSTANCE;
     }
 
+    private final SpigotMessageSender spigotMessageSender = SpigotMessageSender.getInstance();
     private final ColorFormatter colorFormatter = ColorFormatter.getInstance();
 
     @Override
-    public void openBook(Player player, String title, String author, List<String> rules) {
+    public void openBook(Player player, String title, String author, List<String> rules, boolean... settings) {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
         BookMeta itemMeta = (BookMeta) book.getItemMeta();
 
@@ -35,7 +36,8 @@ public class SpigotBookCreator implements BookHandler {
 
         book.setItemMeta(itemMeta);
 
-        player.openBook(book);
+        if (settings[0]) player.openBook(book);
+        if (settings[1]) player.getInventory().addItem(book);
     }
 
 }

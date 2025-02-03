@@ -1,26 +1,84 @@
-messages:
-  command-sender-is-not-player:
-    enabled: true
-    message:
-      - "This command can only be entered by a player."
-  rules-command-you-don't-have-permission:
-    enabled: true
-    message:
-      - "&#820900You don't have permission."
-  rules-command-successfully:
-    enabled: true
-    message:
-      - "&#00f700These are the rules of our server"
+#If you are using a spigot, the plugin supports HEX, e.g. &#000000
+#If you are using paper, the plugin supports MiniMessage, such as <#000000>.
+#The plugin adapts to your core: paper or spigot.
+#You can create as many books as you want.
+#The command permission works like this: abookmanager.{commandName}
+#For example: abookmanager.rules, abookmanager.info
 
+rules: #Command name.
+  command: #Command configuration.
+    description: "The rules of our server." #Command description.
+    usage: "" #Command usage.
+    aliases: #Different names of command.
+      - ""
+  settings:
+    book-auto-open: true #Open a book when a player enters the command.
+    give-the-book-to-a-player: false #Giving the book to a player who enters the command.
+    cancel-the-issue-if-the-inventory-is-full: false #Not giving a book if inventory is full.
+  messages: #For each book, you customize the messages for each book uniquely.
+    bookmanager-sender-is-not-player: #If command sender is not player.
+      enabled: true #You can disable or enable message.
+      message:
+        - "This command can only be entered by a player."
+    bookmanager-command-you-don't-have-permission: #If command sender don't have permission.
+      enabled: true #You can disable or enable message.
+      message:
+        - "&#820900You don't have permission."
+    bookmanager-command-if-inventory-is-full: #If inventory is null.
+      enabled: true #You can disable or enable message.
+      message:
+        - "The inventory is fully"
+    bookmanager-command-successfully: #If enters command sucessfully.
+      enabled: true #You can disable or enable message.
+      message:
+        - "&#00f700These are the rules of our server"
+  title: "Rules" #Title of book, not be null!
+  author: "August1251" #Author of book, not be null!
+  pages: #Pages of book.
+    1:
+      - "1.1 Test rule"
+      - "1.2 Test rule"
+      - "1.3 Test rule"
+    2:
+      - "2.1 Test rule"
+      - "2.2 Test rule"
+      - "2.3 Test rule"
 
-title: "Rules"
-author: "August1251"
-rules:
-  1:
-    - "1.1 Test"
-    - "1.2 Test"
-    - "1.3 Test"
-  2:
-    - "2.1 Test"
-    - "2.2 Test"
-    - "2.3 Test"
+info: #Command name.
+  command: #Command configuration.
+    description: "The information of our server." #Command description.
+    usage: "" #Command usage.
+    aliases: #Different names of command.
+      - ""
+  settings: #Open a book when a player enters the command.
+    book-auto-open: false #Giving the book to a player who enters the command.
+    give-the-book-to-a-player: true #Giving the book to a player who enters the command.
+    cancel-the-issue-if-the-inventory-is-full: true #Not giving a book if inventory is full.
+  messages: #For each book, you customize the messages for each book uniquely.
+    bookmanager-sender-is-not-player: #If command sender is not player.
+      enabled: true #You can disable or enable message.
+      message:
+        - "This command can only be entered by a player."
+    bookmanager-command-you-don't-have-permission: #If command sender don't have permission.
+      enabled: true #You can disable or enable message.
+      message:
+        - "You don't have permission."
+    bookmanager-command-if-inventory-is-full: #If inventory is null.
+      enabled: true #You can disable or enable message.
+      message:
+        - "The inventory is fully"
+    bookmanager-command-successfully: #If enters command sucessfully.
+      enabled: true #You can disable or enable message.
+      message:
+        - "These are the information of our server"
+  title: "Information" #Title of book, not be null!
+  author: "August1251" #Author of book, not be null!
+  pages: #Pages of book.
+    1:
+      - "1.1 Test information"
+      - "1.2 Test information"
+      - "1.3 Test information"
+    2:
+      - "2.1 Test information"
+      - "2.2 Test information"
+      - "2.3 Test information"
