@@ -1,5 +1,7 @@
 name: aBookManager
-version: '2.0.0'
+version: '2.0.1'
 main: org.august.bookmanager.aBookManager
 api-version: '1.13'
-authors: [ August1251 ]
+author: August1251
+softdepend:
+  - "PlaceholderAPI"

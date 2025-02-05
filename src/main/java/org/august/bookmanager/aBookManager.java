@@ -7,6 +7,7 @@ import org.august.bookmanager.config.BooksConfiguration;
 import org.august.bookmanager.config.SettingsConfiguration;
 import org.august.bookmanager.dto.CommandDto;
 import org.august.bookmanager.manager.MessageManager;
+import org.august.bookmanager.utility.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +21,8 @@ public final class aBookManager extends JavaPlugin {
         saveDefaultConfig();
         configure();
         registerCommands();
+
+        Metrics metrics = new Metrics(this, 24656);
     }
 
     private void configure() {
