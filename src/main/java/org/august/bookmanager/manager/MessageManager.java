@@ -32,12 +32,10 @@ public class MessageManager {
         if (Bukkit.getVersion().split("-")[1].equals("Spigot")) {
             for (String message : messageDto.getMessage()) {
                 SpigotMessageSender.getInstance().sendMessage(message, player);
-                System.out.println(getPlaceholderText(message, player));
             }
         } else {
             for (String message : messageDto.getMessage()) {
                 PaperMessageSender.getInstance().sendMessage(message, player);
-                System.out.println(getPlaceholderText(message, player));
             }
         }
     }
