@@ -13,8 +13,9 @@ rules: #Command name.
       - ""
   settings:
     book-auto-open: true #Open a book when a player enters the command.
-    give-the-book-to-a-player: false #Giving the book to a player who enters the command.
+    give-the-book-to-a-player: true #Giving the book to a player who enters the command.
     cancel-the-issue-if-the-inventory-is-full: false #Not giving a book if inventory is full.
+    drop-the-book-if-the-inventory-is-full: true #Throws a book out of the inventory if it is full
   messages: #For each book, you customize the messages for each book uniquely.
     bookmanager-sender-is-not-player: #If command sender is not player.
       enabled: true #You can disable or enable message.
@@ -54,6 +55,7 @@ info: #Command name.
     book-auto-open: false #Giving the book to a player who enters the command.
     give-the-book-to-a-player: true #Giving the book to a player who enters the command.
     cancel-the-issue-if-the-inventory-is-full: true #Not giving a book if inventory is full.
+    drop-the-book-if-the-inventory-is-full: false #Throws a book out of the inventory if it is full
   messages: #For each book, you customize the messages for each book uniquely.
     bookmanager-sender-is-not-player: #If command sender is not player.
       enabled: true #You can disable or enable message.

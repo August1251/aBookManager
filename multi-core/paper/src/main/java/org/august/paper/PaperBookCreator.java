@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.BookMeta;
 
 import java.util.List;
 
-public class PaperBookCreator implements BookHandler {
+public class PaperBookCreator extends BookHandler {
 
     public static class Holder {
         public static final PaperBookCreator INSTANCE = new PaperBookCreator();
@@ -37,7 +37,8 @@ public class PaperBookCreator implements BookHandler {
         book.setItemMeta(itemMeta);
 
         if (settings[0]) player.openBook(book);
-        if (settings[1]) player.getInventory().addItem(book);
+        if (isInventoryFull(player, book) && settings[1]) player.getInventory().addItem(book);
+        if (!isInventoryFull(player, book) && settings[2]) player.getWorld().dropItem(player.getLocation(), book);
 
     }
 

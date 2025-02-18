@@ -31,8 +31,9 @@ public class SettingsConfiguration {
         boolean bookAutoOpen = settingsSection.getBoolean("book-auto-open");
         boolean giveTheBookToAPlayer = settingsSection.getBoolean("give-the-book-to-a-player");
         boolean cancelTheIssueIfTheInventoryIsFull = settingsSection.getBoolean("cancel-the-issue-if-the-inventory-is-full");
+        boolean dropTheBookIfTheInventoryIsFull = settingsSection.getBoolean("drop-the-book-if-the-inventory-is-full");
 
-        return new SettingsDto(bookAutoOpen, giveTheBookToAPlayer, cancelTheIssueIfTheInventoryIsFull);
+        return new SettingsDto(bookAutoOpen, giveTheBookToAPlayer, cancelTheIssueIfTheInventoryIsFull, dropTheBookIfTheInventoryIsFull);
     }
 
     public void setBookManager(aBookManager bookManager) {

@@ -21,9 +21,9 @@ public class BookManager {
         SettingsDto settingsDto = bookDto.getSettingsDto();
 
         if (Bukkit.getVersion().split("-")[1].equals("Spigot")) {
-            SpigotBookCreator.getInstance().openBook(player, bookDto.getTitle(), bookDto.getAuthor(), bookDto.getPages(), settingsDto.isBookAutoOpen(), settingsDto.isGiveTheBookToAPlayer());
+            SpigotBookCreator.getInstance().openBook(player, bookDto.getTitle(), bookDto.getAuthor(), bookDto.getPages(), settingsDto.isBookAutoOpen(), settingsDto.isGiveTheBookToAPlayer(), settingsDto.isDropTheBookIfTheInventoryIsFull());
         } else {
-            PaperBookCreator.getInstance().openBook(player, bookDto.getTitle(), bookDto.getAuthor(), bookDto.getPages(), settingsDto.isBookAutoOpen(), settingsDto.isGiveTheBookToAPlayer());
+            PaperBookCreator.getInstance().openBook(player, bookDto.getTitle(), bookDto.getAuthor(), bookDto.getPages(), settingsDto.isBookAutoOpen(), settingsDto.isGiveTheBookToAPlayer(), settingsDto.isDropTheBookIfTheInventoryIsFull());
         }
     }
 
