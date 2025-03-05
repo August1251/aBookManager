@@ -12,6 +12,7 @@ rules: #Command name.
     aliases: #Different names of command.
       - ""
   settings:
+    cooldown: 0 #Wait time to use this command, set to 0 if you do not need the wait time.
     book-auto-open: true #Open a book when a player enters the command.
     give-the-book-to-a-player: true #Giving the book to a player who enters the command.
     cancel-the-issue-if-the-inventory-is-full: false #Not giving a book if inventory is full.
@@ -29,6 +30,10 @@ rules: #Command name.
       enabled: true #You can disable or enable message.
       message:
         - "The inventory is fully"
+    bookmanager-command-cooldown-is-not-elapsed: #Cooldown is not elapsed.
+      enabled: true #You can disable or enable message.
+      message:
+        - "Cooldown is not elapsed: %cooldown%" # %cooldown% - An elapsed time
     bookmanager-command-successfully: #If enters command sucessfully.
       enabled: true #You can disable or enable message.
       message:
@@ -52,6 +57,7 @@ info: #Command name.
     aliases: #Different names of command.
       - ""
   settings: #Open a book when a player enters the command.
+    cooldown: 10 #Wait time to use this command, set to 0 if you do not need the wait time.
     book-auto-open: false #Giving the book to a player who enters the command.
     give-the-book-to-a-player: true #Giving the book to a player who enters the command.
     cancel-the-issue-if-the-inventory-is-full: true #Not giving a book if inventory is full.
@@ -69,6 +75,10 @@ info: #Command name.
       enabled: true #You can disable or enable message.
       message:
         - "The inventory is fully"
+    bookmanager-command-cooldown-is-not-elapsed: #Cooldown is not elapsed.
+      enabled: true #You can disable or enable message.
+      message:
+        - "Cooldown is not elapsed: %cooldown%" # %cooldown% - An elapsed time
     bookmanager-command-successfully: #If enters command sucessfully.
       enabled: true #You can disable or enable message.
       message:

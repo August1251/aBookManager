@@ -12,7 +12,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class BaseCommand extends BukkitCommand {
 
@@ -20,6 +22,7 @@ public class BaseCommand extends BukkitCommand {
     private final BooksConfiguration booksConfiguration = BooksConfiguration.getInstance();
     private final MessageManager messageManager = MessageManager.getInstance();
     private final BookManager bookManager = BookManager.getInstance();
+    private final HashMap<UUID, Long> cooldown = new HashMap<>();
 
     private final String name;
 
@@ -35,6 +38,21 @@ public class BaseCommand extends BukkitCommand {
             BookDto bookDto = booksConfiguration.getBook(name);
             SettingsDto settingsDto = bookDto.getSettingsDto();
             Player player = (Player) sender;
+            UUID uuid = player.getUniqueId();
+
+            if (settingsDto.getCooldown() != 0) {
+                if (!cooldown.containsKey(player.getUniqueId())) {
+                    cooldown.put(player.getUniqueId(), System.currentTimeMillis());
+                } else {
+                    long timeElapsed = System.currentTimeMillis() - cooldown.get(player.getUniqueId());
+                    if (timeElapsed >= settingsDto.getCooldown()) {
+                        cooldown.put(player.getUniqueId(), System.currentTimeMillis());
+                    } else {
+                        messageManager.sendMessage(messagesConfiguration.getMessage(name, "bookmanager-command-cooldown-is-not-elapsed"), player, String.valueOf(10 - timeElapsed / 1000));
+                        return false;
+                    }
+                }
+            }
 
             if (!player.hasPermission(new StringBuilder("abookmanager.").append(bookDto.getName()).toString())) {
                 messageManager.sendMessage(messagesConfiguration.getMessage(name, "bookmanager-command-you-don't-have-permission"), player);

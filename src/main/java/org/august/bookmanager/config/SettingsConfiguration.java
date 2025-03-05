@@ -28,12 +28,13 @@ public class SettingsConfiguration {
     public SettingsDto getSettings(String bookId) {
         ConfigurationSection settingsSection = getSettingsSection(bookId);
 
+        int cooldown = settingsSection.getInt("cooldown") * 1000;
         boolean bookAutoOpen = settingsSection.getBoolean("book-auto-open");
         boolean giveTheBookToAPlayer = settingsSection.getBoolean("give-the-book-to-a-player");
         boolean cancelTheIssueIfTheInventoryIsFull = settingsSection.getBoolean("cancel-the-issue-if-the-inventory-is-full");
         boolean dropTheBookIfTheInventoryIsFull = settingsSection.getBoolean("drop-the-book-if-the-inventory-is-full");
 
-        return new SettingsDto(bookAutoOpen, giveTheBookToAPlayer, cancelTheIssueIfTheInventoryIsFull, dropTheBookIfTheInventoryIsFull);
+        return new SettingsDto(cooldown, bookAutoOpen, giveTheBookToAPlayer, cancelTheIssueIfTheInventoryIsFull, dropTheBookIfTheInventoryIsFull);
     }
 
     public void setBookManager(aBookManager bookManager) {

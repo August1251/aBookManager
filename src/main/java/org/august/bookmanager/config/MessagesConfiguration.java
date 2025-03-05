@@ -34,7 +34,7 @@ public class MessagesConfiguration {
         boolean enabled = messageSection.getBoolean("enabled");
         List<String> message = messageSection.getStringList("message");
 
-        return new MessageDto(messageId, enabled, message);
+        return new MessageDto(bookId, messageId, enabled, message);
     }
 
     public List<MessageDto> getMessages(String bookId) {
